@@ -3,4 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Pet card layout -->
+    <dimen name="pet_card_height">96dp</dimen>
+    <dimen name="pet_card_margin">8dp</dimen>
+    <dimen name="pet_icon_padding">8dp</dimen>
+    <dimen name="pet_name_text_size">36sp</dimen>
 </resources>

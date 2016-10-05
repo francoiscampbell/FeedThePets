@@ -1,5 +1,6 @@
 package xyz.fcampbell.feedthepets
 
+import android.R
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -7,6 +8,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.contentView
+import org.jetbrains.anko.onClick
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +19,11 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show() }
+        fab.onClick { view ->
+            Snackbar.make(contentView!!, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
