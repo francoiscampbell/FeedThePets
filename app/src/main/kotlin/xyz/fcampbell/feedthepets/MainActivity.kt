@@ -12,16 +12,19 @@ import xyz.fcampbell.feedthepets.view.model.Pet
 
 class MainActivity : AppCompatActivity() {
 
+    private val pets = mutableListOf(
+            Pet(name = "Juno"),
+            Pet(name = "Jewel"),
+            Pet(name = "Pepper"))
+
+    private val petAdapter = PetAdapter(pets)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        petList.adapter = PetAdapter(listOf(
-                Pet(name = "Juno"),
-                Pet(name = "Jewel"),
-                Pet(name = "Pepper")
-        ))
+        petList.adapter = petAdapter
         petList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
@@ -38,10 +41,21 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true
+        when (id) {
+            R.id.action_settings -> return true
+            R.id.action_add_pet -> {
+                addPet()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
 
-        return super.onOptionsItemSelected(item)
+    }
+
+    fun addPet() {
+        val insertPosition = pets.size
+        pets += Pet(name = "Pet")
+        petAdapter.notifyItemInserted(insertPosition)
+        petList.smoothScrollToPosition(insertPosition)
     }
 }

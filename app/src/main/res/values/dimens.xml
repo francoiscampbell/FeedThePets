@@ -6,7 +6,7 @@
 
     <!-- Pet card layout -->
     <dimen name="pet_card_height">96dp</dimen>
-    <dimen name="pet_card_margin">8dp</dimen>
+    <dimen name="pet_card_margin">4dp</dimen>
     <dimen name="pet_icon_padding">8dp</dimen>
     <dimen name="pet_name_text_size">36sp</dimen>
 </resources>
