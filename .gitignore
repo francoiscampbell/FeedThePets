@@ -1,6 +1,6 @@
 
 ### Gradle template
-.gradle
+.gradle/
 build/
 
 # Ignore Gradle GUI config
@@ -20,21 +20,6 @@ gradle-app.setting
 
 # IDE-specific stuff:
 .idea/
-
-# Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-
-# Gradle:
-.idea/gradle.xml
-.idea/libraries
-
-# Mongo Explorer plugin:
-.idea/mongoSettings.xml
 
 ## File-based project format:
 *.iws
@@ -70,9 +55,6 @@ fabric.properties
 bin/
 gen/
 out/
-
-# Gradle files
-.gradle/
 
 # Local configuration file (sdk path, etc)
 local.properties
