@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pet.view.*
 import xyz.fcampbell.feedthepets.R
 import xyz.fcampbell.feedthepets.view.model.Pet
@@ -22,9 +23,12 @@ class PetAdapter(private val pets: List<Pet>) : RecyclerView.Adapter<PetAdapter.
 
     class PetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindPet(pet: Pet) {
-            itemView.apply {
-                name.text = pet.name
-                //TODO use picasso to load picture
+            itemView.name.text = pet.name
+
+            if (!pet.picture.isNullOrBlank()) {
+                Picasso.with(itemView.context)
+                        .load(pet.picture)
+                        .into(itemView.picture)
             }
         }
     }
