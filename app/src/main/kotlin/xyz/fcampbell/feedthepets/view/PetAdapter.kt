@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pet.view.*
 import xyz.fcampbell.feedthepets.R
+import xyz.fcampbell.feedthepets.di.main_activity.MainActivityScope
 import xyz.fcampbell.feedthepets.view.model.Pet
+import javax.inject.Inject
 
 /**
  * Created by francois on 2016-10-05.
  */
-class PetAdapter(private val pets: List<Pet>) : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
+@MainActivityScope
+class PetAdapter @Inject constructor() : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
+    lateinit var pets: List<Pet>
+
     override fun getItemCount(): Int = pets.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {

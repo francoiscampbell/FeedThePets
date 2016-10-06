@@ -1,6 +1,7 @@
 package xyz.fcampbell.feedthepets.di.app
 
 import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,7 +15,9 @@ class AppModule(
 ) {
     @Provides
     @Singleton
-    fun provideApp() : Application {
-        return app
-    }
+    fun provideApp(): Application = app
+
+    @Provides
+    @Singleton
+    fun provideAppContext(): Context = app
 }

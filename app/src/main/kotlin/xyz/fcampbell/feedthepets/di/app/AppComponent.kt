@@ -1,6 +1,7 @@
 package xyz.fcampbell.feedthepets.di.app
 
 import android.app.Application
+import android.content.Context
 import dagger.Component
 import javax.inject.Singleton
 
@@ -11,4 +12,5 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun app(): Application
+    fun appContext(): Context
 }

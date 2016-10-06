@@ -2,30 +2,32 @@ package xyz.fcampbell.feedthepets
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import xyz.fcampbell.feedthepets.view.PetAdapter
+import xyz.fcampbell.feedthepets.di.main_activity.DaggerMainActivityComponent
 import xyz.fcampbell.feedthepets.view.model.Pet
 
 class MainActivity : AppCompatActivity() {
+    private val component = DaggerMainActivityComponent.builder()
+            .appComponent(PetApp.COMPONENT)
+            .build()
 
-    private val pets = mutableListOf(
+    private val petAdapter = component.petAdapter()
+    private val testPets = mutableListOf(
             Pet(name = "Juno"),
             Pet(name = "Jewel"),
             Pet(name = "Pepper"))
-
-    private val petAdapter = PetAdapter(pets)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        petAdapter.pets = testPets
         petList.adapter = petAdapter
-        petList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        petList.layoutManager = component.linearLayoutManager()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -53,8 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addPet() {
-        val insertPosition = pets.size
-        pets += Pet(name = "Pet")
+        val insertPosition = testPets.size
+        testPets += Pet(name = "Pet")
         petAdapter.notifyItemInserted(insertPosition)
         petList.smoothScrollToPosition(insertPosition)
     }
